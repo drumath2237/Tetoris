@@ -11,7 +11,6 @@ class TetriminoBlockElement
     @move(@pointTop, @pointLeft)
 
   append: () ->
-    # helloConsole("from @append")
     $("#field").append("<div class='falling_#{@type}' id='#{@myName}'></div>")
     return
 

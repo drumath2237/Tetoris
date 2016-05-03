@@ -25,7 +25,7 @@ class Tetrimino
         if block.judgeBottom() is off
           for block_ in @blocks
             block_.changeAttr()
-          return "falled!"
+          return false
     if deltaPointLeft > 0
       for block in @blocks
         if block.judgeRight() is off
@@ -43,15 +43,6 @@ class Tetrimino
     return true
 
   rotate: (deg) ->
-    for block in @blocks
-
-      console.log [
-          "bottom: #{block.judgeBottom()}"
-          "left: #{block.judgeLeft()}"
-          "right: #{block.judgeRight()}"
-        ]
-      # if block.judgeBottom() and block.judgeLeft() and block.judgeRight()
-    # return
     for block, i in @blocks
       block.moveAbsolute(
         @point.top + @deg["deg#{deg}"][i*2],
@@ -59,7 +50,6 @@ class Tetrimino
         )
 
 class TetriminoRed extends Tetrimino
-
   constructor: () ->
     super([
       0, 0
@@ -84,4 +74,31 @@ class TetriminoRed extends Tetrimino
       30, 30
       60, 0
       60, 30
+    ]
+
+class TetriminoYellow extends Tetrimino
+  constructor: (args) ->
+    super([
+      0, 0
+      0, 30
+      30, 0
+      30, 30
+      ], "yellow")
+    @deg["deg90"]=[
+      0, 0
+      0, 30
+      30, 0
+      30, 30
+    ]
+    @deg["deg180"]=[
+      0, 0
+      0, 30
+      30, 0
+      30, 30
+    ]
+    @deg["deg270"]=[
+      0, 0
+      0, 30
+      30, 0
+      30, 30
     ]
